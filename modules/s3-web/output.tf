@@ -8,6 +8,11 @@ output "name" {
   value       = aws_s3_bucket.web_bucket.id
 }
 
+output "bucket_regional_domain_name" {
+  description = "Domain name of the bucket"
+  value       = aws_s3_bucket.web_bucket.bucket_regional_domain_name
+}
+
 output "domain" {
   description = "Domain name of the bucket"
   value       = aws_s3_bucket_website_configuration.web_bucket.website_domain

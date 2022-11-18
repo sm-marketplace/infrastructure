@@ -11,3 +11,7 @@
   ```
 - luego apply para modificar el bucket
 - luego podemos hacer el destroy comentando las lineas de codigo o directamente con terraform destroy si queremos borrar todo
+
+## TODO:
+
+- manejar entornos (ej: x workspaces) para reducir la cantidad de variables
