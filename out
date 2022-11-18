@@ -1,4 +1,4 @@
-web_client_dev_domain = "dfox2pr7carj0.cloudfront.net"
+web_client_dev_domain = "d1xg9l5tde1b65.cloudfront.net"
 web_client_dev_name = "smmp-web-client-dev"
-web_client_prod_domain = "d279fh92el2cjv.cloudfront.net"
+web_client_prod_domain = "d21gf1rtovkxuc.cloudfront.net"
 web_client_prod_name = "smmp-web-client-prod"
