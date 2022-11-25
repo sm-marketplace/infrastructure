@@ -52,3 +52,17 @@ module "cfront_web_client_dev" {
   bucket_name                 = local.bucket_name_dev
   tags                        = local.tags_dev
 }
+
+module "api_proxy_dev" {
+  source         = "./modules/ec2-api"
+  key_name       = "SMMP_DEV_ShhKey"
+  security_group = "dev_security_group"
+  tags           = local.tags_dev
+}
+
+module "api_proxy_prod" {
+  source         = "./modules/ec2-api"
+  key_name       = "SMMP_PROD_ShhKey"
+  security_group = "prod_security_group"
+  tags           = local.tags_prod
+}

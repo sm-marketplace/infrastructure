@@ -15,3 +15,18 @@
 ## TODO:
 
 - manejar entornos (ej: x workspaces) para reducir la cantidad de variables
+
+## Conexion EC2
+
+```ssh -i terraform-keys ubuntu@ec2-3-226-6-32.compute-1.amazonaws.com```
+
+## EC2 install docker
+```sh
+sudo apt-get update
+sudo apt-get install docker.io
+```
+check docker running
+```service docker.io status```
+
+start docker
+```service docker.io start```

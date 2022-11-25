@@ -1,3 +1,5 @@
+api_proxy_dev_ec2_public_ip = "ec2-34-238-181-64.compute-1.amazonaws.com"
+api_proxy_prod_ec2_public_ip = "ec2-3-226-6-32.compute-1.amazonaws.com"
 web_client_dev_domain = "d1xg9l5tde1b65.cloudfront.net"
 web_client_dev_name = "smmp-web-client-dev"
 web_client_prod_domain = "d21gf1rtovkxuc.cloudfront.net"
