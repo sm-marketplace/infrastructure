@@ -17,9 +17,9 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     }
 
     // Here we're using our S3 bucket's URL!
-    domain_name = "${var.bucket_regional_domain_name}"
+    domain_name = var.bucket_regional_domain_name
     // This can be any name to identify this origin.
-    origin_id   = local.origin_id
+    origin_id = local.origin_id
   }
 
   enabled             = true
@@ -32,10 +32,10 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     allowed_methods        = ["GET", "HEAD"]
     cached_methods         = ["GET", "HEAD"]
     // This needs to match the `origin_id` above.
-    target_origin_id       = local.origin_id
-    min_ttl                = 0
-    default_ttl            = 86400
-    max_ttl                = 31536000
+    target_origin_id = local.origin_id
+    min_ttl          = 0
+    default_ttl      = 86400
+    max_ttl          = 31536000
 
     forwarded_values {
       query_string = false
@@ -55,5 +55,23 @@ resource "aws_cloudfront_distribution" "www_distribution" {
 
   viewer_certificate {
     cloudfront_default_certificate = true
+  }
+
+
+  // Problema con SPA, al acceder a /home cloudfront busca 'home' en S3
+  // y obviamente no lo encuentra, para manejar esto lo redirigiremos 
+  // siempre que haya este error (400, 403) a index.html que es nuestra 
+  // app de angular para q esta lo maneje. 
+  // [*] fuente: https://stackoverflow.com/questions/44318922/receive-accessdenied-when-trying-to-access-a-page-via-the-full-url-on-my-website
+  custom_error_response {
+    error_code         = 403
+    response_code      = 200
+    response_page_path = "/index.html"
+  }
+
+  custom_error_response {
+    error_code         = 400
+    response_code      = 200
+    response_page_path = "/index.html"
   }
 }

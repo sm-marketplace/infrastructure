@@ -1,0 +1,1 @@
+ssh -i terraform-keys ubuntu@ec2-34-238-181-64.compute-1.amazonaws.com "sudo docker ps"

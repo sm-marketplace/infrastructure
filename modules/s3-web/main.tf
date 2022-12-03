@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "web_bucket_policy" {
     ]
     principals {
       identifiers = ["*"]
-      type = "AWS"
+      type        = "AWS"
     }
     resources = [
       "arn:aws:s3:::${var.bucket_name}/*"
@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "web_bucket_policy" {
 
 resource "aws_s3_bucket" "web_bucket" {
   bucket = var.bucket_name
-  tags = var.tags
+  tags   = var.tags
 }
 
 resource "aws_s3_bucket_policy" "web_bucket" {
@@ -29,6 +29,6 @@ resource "aws_s3_bucket_website_configuration" "web_bucket" {
     suffix = "index.html"
   }
   error_document {
-    key = "error.html"
+    key = "index.html"
   }
 }
