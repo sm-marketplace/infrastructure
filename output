@@ -1,0 +1,16 @@
+api_proxies = [
+  "ec2-54-88-42-187.compute-1.amazonaws.com",
+  "ec2-44-212-148-121.compute-1.amazonaws.com",
+]
+cloudfront_domains = [
+  "d3943aznui52ij.cloudfront.net",
+  "d231y4oh2javjr.cloudfront.net",
+]
+stages = [
+  "dev",
+  "prod",
+]
+web_clients = [
+  "smmp-web-client-dev",
+  "smmp-web-client-prod",
+]
