@@ -12,8 +12,8 @@ provider "aws" {
 }
 
 locals {
-  instances = [ 
-    { 
+  instances = [
+    {
       bucket_name = "smmp-web-client-dev"
       tags = {
         Terraform = "true"
