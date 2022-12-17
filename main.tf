@@ -5,13 +5,6 @@ terraform {
     region         = "us-east-1"
     dynamodb_table = "rgb-terraform-table"
   }
-
-  # backend "s3" {
-  #   bucket         = "rogrp-bucket"
-  #   key            = "terraform.tfstate"
-  #   region         = "us-east-1"
-  #   dynamodb_table = "rogrp-table"
-  # }
 }
 
 provider "aws" {
@@ -19,8 +12,8 @@ provider "aws" {
 }
 
 locals {
-  instances = [ 
-    { 
+  instances = [
+    {
       bucket_name = "smmp-web-client-dev"
       tags = {
         Terraform = "true"
