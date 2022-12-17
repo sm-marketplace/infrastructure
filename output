@@ -1,10 +1,10 @@
 api_proxies = [
-  "ec2-54-88-42-187.compute-1.amazonaws.com",
-  "ec2-44-212-148-121.compute-1.amazonaws.com",
+  "ec2-3-216-199-173.compute-1.amazonaws.com",
+  "ec2-35-169-79-235.compute-1.amazonaws.com",
 ]
 cloudfront_domains = [
-  "d3943aznui52ij.cloudfront.net",
-  "d231y4oh2javjr.cloudfront.net",
+  "d1z83dgpk6ewux.cloudfront.net",
+  "d22dtnocyg06bd.cloudfront.net",
 ]
 stages = [
   "dev",

@@ -1,6 +1,10 @@
 const { promisify } = require('util');
-const { TrrOutParser } = require('./trr-out-parser');
+const { TrrOutParser } = require('./utils/trr-out-parser');
 const exec = promisify(require('child_process').exec)
+
+const sshPrivKeyPath = "terraform-keys";
+const sshUser = `ubuntu`
+const installDepCmd = "sudo apt-get update && sudo apt-get -y install docker.io";
 
 // Install Docker in EC2 instances
 async function run() {
@@ -13,9 +17,9 @@ async function run() {
   const parser = new TrrOutParser(trrJson)
 
   for (const stage of parser.stages) {
-    console.log("stage: ", stage)
+    console.log("[*] On stage: ", stage)
     const url = parser.value("api_proxies", stage);
-    const cmd = `ssh -o "StrictHostKeyChecking no" -i terraform-keys ubuntu@${url} "sudo apt-get update && sudo apt-get -y install docker.io"`;
+    const cmd = `ssh -o "StrictHostKeyChecking no" -i ${sshPrivKeyPath} ${sshUser}@${url} "${installDepCmd}"`;
 
     console.log("> " + cmd);
     console.log(await exec(cmd))
@@ -23,5 +27,5 @@ async function run() {
 };
 
 run().then(
-  console.log
+  _ => console.log("Finish.")
 )
