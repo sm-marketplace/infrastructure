@@ -1,10 +1,17 @@
 terraform {
   backend "s3" {
-    bucket         = "rogrp-bucket"
+    bucket         = "rgb-terraformbe"
     key            = "terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "rogrp-table"
+    dynamodb_table = "rgb-terraform-table"
   }
+
+  # backend "s3" {
+  #   bucket         = "rogrp-bucket"
+  #   key            = "terraform.tfstate"
+  #   region         = "us-east-1"
+  #   dynamodb_table = "rogrp-table"
+  # }
 }
 
 provider "aws" {
