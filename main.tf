@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "rogrpb-terraform-backend"
+    bucket         = "rogrp-bucket"
     key            = "terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "rogrp-table"
