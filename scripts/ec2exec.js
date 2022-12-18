@@ -27,7 +27,7 @@ async function run() {
   // Parser
   const parser = new TrrOutParser(trrJson)
 
-  const url = parser.value("api_proxies", argStage);
+  const url = parser.value("api_domains", argStage);
   const cmd = `ssh -o "StrictHostKeyChecking no" -i ${sshPrivKeyPath} ${sshUser}@${url} "${argCmd}"`;
   console.log("> " + cmd);
 

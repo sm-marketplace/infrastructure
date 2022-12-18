@@ -18,7 +18,7 @@ async function run() {
 
   for (const stage of parser.stages) {
     console.log("[*] On stage: ", stage)
-    const url = parser.value("api_proxies", stage);
+    const url = parser.value("api_domains", stage);
     const cmd = `ssh -o "StrictHostKeyChecking no" -i ${sshPrivKeyPath} ${sshUser}@${url} "${installDepCmd}"`;
 
     console.log("> " + cmd);
