@@ -4,7 +4,7 @@ const exec = promisify(require('child_process').exec)
 
 const sshPrivKeyPath = "terraform-keys";
 const sshUser = `ubuntu`
-const installDepCmd = "sudo apt-get update && sudo apt-get -y install docker.io";
+const installDepCmd = "sudo apt-get update && sudo apt-get -y install docker.io && sudo apt-get -y install docker-compose";
 
 // Install Docker in EC2 instances
 async function run() {
