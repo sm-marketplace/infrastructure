@@ -30,3 +30,10 @@ check docker running
 
 start docker
 ```service docker.io start```
+
+
+**Terraform lista recursos**
+`terraform state list`
+
+**Terraform mostrar propiedades de un recurso**
+`terraform state show module.cfront_web_client[0].aws_cloudfront_distribution.www_distribution`

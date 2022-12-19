@@ -4,7 +4,7 @@ const exec = promisify(require('child_process').exec)
 
 const sshPrivKeyPath = "terraform-keys";
 const sshUser = `ubuntu`
-const installDepCmd = "sudo apt-get update && sudo apt-get -y install docker.io";
+const installDepCmd = "sudo apt-get update && sudo apt-get -y install docker.io && sudo apt-get -y install docker-compose";
 
 // Install Docker in EC2 instances
 async function run() {
@@ -18,7 +18,7 @@ async function run() {
 
   for (const stage of parser.stages) {
     console.log("[*] On stage: ", stage)
-    const url = parser.value("api_proxies", stage);
+    const url = parser.value("api_domains", stage);
     const cmd = `ssh -o "StrictHostKeyChecking no" -i ${sshPrivKeyPath} ${sshUser}@${url} "${installDepCmd}"`;
 
     console.log("> " + cmd);

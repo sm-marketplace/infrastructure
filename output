@@ -1,16 +1,20 @@
-api_proxies = [
+api_domains = [
   "ec2-3-216-199-173.compute-1.amazonaws.com",
   "ec2-35-169-79-235.compute-1.amazonaws.com",
+]
+buckets = [
+  "smmp-web-client-dev",
+  "smmp-web-client-prod",
 ]
 cloudfront_domains = [
   "d1z83dgpk6ewux.cloudfront.net",
   "d22dtnocyg06bd.cloudfront.net",
 ]
+cloudfront_ids = [
+  "E3QHZHQDH76282",
+  "EQCJIY8ZRIK4F",
+]
 stages = [
   "dev",
   "prod",
-]
-web_clients = [
-  "smmp-web-client-dev",
-  "smmp-web-client-prod",
 ]
