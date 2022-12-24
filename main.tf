@@ -54,3 +54,47 @@ module "api_proxy" {
   security_group = "${local.instances[count.index].tags.Stage}_security_group"
   tags           = local.instances[count.index].tags
 }
+
+module "monitor" {
+  count          = length(local.instances)
+  source         = "./modules/ec2-api"
+  key_name       = "SMMP_monitor_${local.instances[count.index].tags.Stage}_ShhKey"
+  security_group = "${local.instances[count.index].tags.Stage}_monitor_security_group"
+  tags           = local.instances[count.index].tags
+}
+
+# # =========================== TEST
+
+# resource "aws_api_gateway_rest_api" "api" {
+#  name = "api-gateway"
+#  description = "Proxy to handle requests to our API"
+# }
+
+# resource "aws_api_gateway_resource" "resource" {
+#   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+#   parent_id   = "${aws_api_gateway_rest_api.api.root_resource_id}"
+#   path_part   = "{proxy+}"
+# }
+# resource "aws_api_gateway_method" "method" {
+#   rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
+#   resource_id   = "${aws_api_gateway_resource.resource.id}"
+#   http_method   = "ANY"
+#   authorization = "NONE"
+#   request_parameters = {
+#     "method.request.path.proxy" = true
+#   }
+# }
+# resource "aws_api_gateway_integration" "integration" {
+#   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+#   resource_id = "${aws_api_gateway_resource.resource.id}"
+#   http_method = "${aws_api_gateway_method.method.http_method}"
+#   integration_http_method = "ANY"
+#   type                    = "HTTP_PROXY"
+#   uri                     = "http://ec2-35-169-79-235.compute-1.amazonaws.com/{proxy}"
+ 
+#   request_parameters =  {
+#     "integration.request.path.proxy" = "method.request.path.proxy"
+#   }
+# }
+
+# https://ljatgbklcf.execute-api.us-east-1.amazonaws.com/{stage_name}/

@@ -17,3 +17,7 @@ output "cloudfront_ids" {
 output "api_domains" {
   value = module.api_proxy.*.ec2_public_dns
 }
+
+output "monitors_domains" {
+  value = module.monitor.*.ec2_public_dns
+}
